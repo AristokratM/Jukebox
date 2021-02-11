@@ -21,7 +21,7 @@ namespace Jukebox.Models
         }
         public BaseClass()
         {
-            _id = new Guid();
+            _id = Guid.NewGuid();
         }
         public BaseClass(String name): this()
         {
