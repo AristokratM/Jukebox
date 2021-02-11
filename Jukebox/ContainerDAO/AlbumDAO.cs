@@ -17,11 +17,11 @@ namespace Jukebox.ContainerDAO
                 data = new Dictionary<Guid, Album>();
                 Album alb;
                 alb = new Album("Album1", DateTime.Now, 50);
-                data.Add(alb.Id, alb);
+                this.Create(alb);
                 alb = new Album("Album2", new DateTime(2002,5, 13), 30);
-                data.Add(alb.Id, alb);
+                this.Create(alb);
                 alb = new Album("Album3", new DateTime(2020, 6, 15), 10);
-                data.Add(alb.Id, alb);
+                this.Create(alb);
             }
             _containerItemDAO = containerItemDAO;
         }
