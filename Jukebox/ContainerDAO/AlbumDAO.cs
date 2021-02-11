@@ -6,11 +6,11 @@ using System.Text;
 using Jukebox.Interfaces;
 namespace Jukebox.ContainerDAO
 {
-    public class AlbumDAO : IContainerDAO<Album>
+    public class AlbumDAO<T> : IContainerDAO<Album> where T :IContainerItem
     {
         private static IDictionary<Guid, Album> data;
-        private IContainerItemDAO<IContainerItem> _containerItemDAO;
-        public AlbumDAO(IContainerItemDAO<IContainerItem> containerItemDAO)
+        private IContainerItemDAO<T> _containerItemDAO;
+        public AlbumDAO(IContainerItemDAO<T> containerItemDAO)
         {
             if (data == null)
             {

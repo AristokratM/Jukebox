@@ -17,8 +17,7 @@ namespace Jukebox.ContainerItemDAO
             if (data == null)
             {
                 data = new Dictionary<Guid, Song>();
-   //             IContainerItemDAO<Song> ici = this;
-   //             AlbumDAO albDAO = new AlbumDAO(ici);
+                AlbumDAO<Song> albDAO = new AlbumDAO<Song>(this);
             }
         }
         public void Create(Song obj)
