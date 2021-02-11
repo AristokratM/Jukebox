@@ -35,6 +35,7 @@ namespace Jukebox.ContainerDAO
             data.Remove(id);
         }
 
+
         public Album Get(Guid id)
         {
             return data[id];

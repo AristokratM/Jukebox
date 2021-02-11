@@ -16,5 +16,6 @@ namespace Jukebox.Interfaces
         public void Delete(Guid id);
 
         public List<T> GetAll();
+
     }
 }

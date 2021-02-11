@@ -10,7 +10,7 @@ namespace Jukebox.Interfaces
 
         public String GetContainerItemAuthor();
 
-        public Single GetUserBalance();
+        public String GetUserBalance();
 
         public String GetContainerItemGenre();
 

@@ -22,11 +22,11 @@ namespace Jukebox.ContainerItemDAO
                 Song song;
                 song = new Song(albums[0], "Корень Имбиря", "Панк-рок", "Буерак", "Буерак", 2.59f);
                 this.Create(song);
-                song = new Song(albums[1], "Song2", "Genre2", "Author2", "Performer2", 3.42f);
+                song = new Song(albums[1], "Song2", "Genre2", "Author2", "Performer2", 3.32f);
                 this.Create(song);
-                song = new Song(albums[2], "Song3", "Genre3", "Author2", "Performer3", 3.42f);
+                song = new Song(albums[2], "Song3", "Genre3", "Author2", "Performer3", 5.22f);
                 this.Create(song);
-                song = new Song(albums[2], "Song4", "Genre2", "Author2", "Performer2", 3.42f);
+                song = new Song(albums[2], "Song4", "Genre2", "Author2", "Performer2", 1.12f);
                 this.Create(song);
             }
         }
@@ -39,6 +39,7 @@ namespace Jukebox.ContainerItemDAO
         {
             data.Remove(id);
         }
+
 
         public Song Get(Guid id)
         {

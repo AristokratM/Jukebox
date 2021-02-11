@@ -53,7 +53,7 @@ namespace Jukebox.Models
 
         public override string ToString()
         {
-            return String.Format("{0} {1} {2} {3}", Genre, Author, Performer, Duration);
+            return String.Format("{0} {1} {2} {3} {4}",Name, Genre, Author, Performer, Duration);
         }
     }
 }

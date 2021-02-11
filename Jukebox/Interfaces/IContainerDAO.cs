@@ -7,5 +7,6 @@ namespace Jukebox.Interfaces
     public interface IContainerDAO<T> : IDAO<T> 
     {
         public List<IContainerItem> GetContainerItems(IContainer container);
+
     }
 }
