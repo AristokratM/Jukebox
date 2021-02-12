@@ -41,12 +41,12 @@ namespace Jukebox.ContainerDAO
             return data[id];
         }
 
-        public List<Album> GetAll()
+        public IList<Album> GetAll()
         {
             return data.Values.ToList();
         }
 
-        public List<IContainerItem> GetContainerItems(IContainer container)
+        public IList<IContainerItem> GetContainerItems(IContainer container)
         {
             List<IContainerItem> containerItems = new List<IContainerItem>();
             foreach (var containerItem in _containerItemDAO.GetAll())

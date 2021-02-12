@@ -18,7 +18,7 @@ namespace Jukebox.ContainerItemDAO
             {
                 data = new Dictionary<Guid, Song>();
                 AlbumDAO<Song> albDAO = new AlbumDAO<Song>(this);
-                List<Album> albums = albDAO.GetAll();
+                IList<Album> albums = albDAO.GetAll();
                 Song song;
                 song = new Song(albums[0], "Корень Имбиря", "Панк-рок", "Буерак", "Буерак", 2.59f);
                 this.Create(song);
@@ -46,7 +46,7 @@ namespace Jukebox.ContainerItemDAO
             return data[id];
         }
 
-        public List<Song> GetAll()
+        public IList<Song> GetAll()
         {
             return data.Values.ToList();
         }
