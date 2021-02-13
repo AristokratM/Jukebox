@@ -9,8 +9,8 @@ namespace Jukebox
 {
     class Jukebox
     {
-        private static IContainerItemDAO<Song> _songItemsDAO = new SongDAO();
-        private static IContainerDAO<Album> _containerSongDAO = new AlbumDAO<Song>(_songItemsDAO);
+
+        private static IContainerDAO<Album> _containerSongDAO = new AlbumDAO<Song>(new SongDAO());
         private static IDataReader _dataReader = new ConsoleDataReader();
         private Jukebox()
         {
