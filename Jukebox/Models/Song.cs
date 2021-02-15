@@ -4,7 +4,7 @@ using System.Text;
 using Jukebox.Interfaces;
 namespace Jukebox.Models
 {
-    public class Song:BaseClass<Song>, IContainerItem
+    public class Song:IBase<Song>, IContainerItem
     {
 
         private String _genre;
@@ -33,7 +33,7 @@ namespace Jukebox.Models
             get { return _duration; }
             set { _duration = value; }
         }
-
+        public String Name { get; set; }
         private Guid _containerId;
 
         public Guid ContainerId 
@@ -42,8 +42,15 @@ namespace Jukebox.Models
                 set { _containerId = value; }
         }
 
-        public Song(IContainer container, String name, String genre, String author, String perfomer, Single duration) : base(name)
+        private Guid _id;
+        public Guid Id
         {
+            get { if (_id == Guid.Empty) _id = Guid.NewGuid(); return _id; }
+        }
+
+        public Song(IContainer container, String name, String genre, String author, String perfomer, Single duration)
+        {
+            this.Name = name;
             this.Genre = genre;
             this.Author = author;
             this.Performer = perfomer;

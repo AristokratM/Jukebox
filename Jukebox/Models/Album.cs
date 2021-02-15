@@ -4,7 +4,7 @@ using System.Text;
 using Jukebox.Interfaces;
 namespace Jukebox.Models
 {
-    public class Album:BaseClass<Album>, IContainer
+    public class Album: IBase<Album>, IContainer
     {
 
         private DateTime _releaseDate;
@@ -19,9 +19,19 @@ namespace Jukebox.Models
             get { return _itemPlayPrice; }
             set { _itemPlayPrice = value; }
         }
+        public string Name { get; set; }
 
-        public Album(String name, DateTime releaseDate, Single itemPlayPrice) : base(name)
+        private Guid _id;
+        public Guid Id
         {
+            get { if (_id == Guid.Empty) _id = Guid.NewGuid(); return _id; }
+        }
+
+
+
+        public Album(String name, DateTime releaseDate, Single itemPlayPrice) 
+        {
+            this.Name = name;
             this.ReleaseDate = releaseDate;
             this.ItemPlayPrice = itemPlayPrice;
         }
