@@ -17,13 +17,8 @@ namespace Jukebox
         }
         static void Main(string[] args)
         {
-            Single balance = Convert.ToSingle(_dataReader.GetUserBalance());
-            String albumName = _dataReader.GetContainerName();
-            IFiltrator<IContainer> containerFiltrator = new ContainerFilter(balance, albumName);
-            String author = _dataReader.GetContainerItemAuthor();
-            String genre = _dataReader.GetContainerItemGenre();
-            String performer = _dataReader.GetContainerItemPerformer();
-            IFiltrator<IContainerItem> containerItemFiltrator = new ContainerItemFilter(author, genre, performer);
+            IFiltrator<IContainer> containerFiltrator = _dataReader.GetContainerFilter();
+            IFiltrator<IContainerItem> containerItemFiltrator = _dataReader.GetContainerItemFilter();
             foreach (var song in GetContainerItems(GetContainers(containerFiltrator), containerItemFiltrator))
             {
                 Console.WriteLine(song);

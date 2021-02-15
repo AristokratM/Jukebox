@@ -6,14 +6,9 @@ namespace Jukebox.Interfaces
 {
     public interface IDataReader
     {
-        public String GetContainerName();
 
-        public String GetContainerItemAuthor();
+        public IFiltrator<IContainer> GetContainerFilter();
 
-        public String GetUserBalance();
-
-        public String GetContainerItemGenre();
-
-        public String GetContainerItemPerformer();
+        public IFiltrator<IContainerItem> GetContainerItemFilter();
     }
 }
