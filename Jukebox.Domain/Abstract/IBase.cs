@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace Jukebox.Domain.Abstract
 {
-    public interface IContainer : IBase
+    public interface IBase
     {
-        String Name { get; set; }
-
-        DateTime ReleaseDate { get; set; }
-
-        Single ItemPlayPrice { get; set; }
+        Int32 Id { get; set; }
     }
 }

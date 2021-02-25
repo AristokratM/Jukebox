@@ -9,7 +9,6 @@ using Jukebox.Domain;
 using Jukebox.Services.Abstract;
 using Jukebox.Mappers;
 using Jukebox.Entities;
-
 namespace Jukebox.Services
 {
     public class AlbumService : IContainerService<Album>
@@ -20,14 +19,19 @@ namespace Jukebox.Services
         {
             _containerRepository = containerRepository;
         }
-        public void Add(Album container)
+        public void Create(Album container)
         {
-            _containerRepository.Add(container.ToEntity());
+            _containerRepository.Create(container.ToEntity());
         }
 
         public void DeleteById(int id)
         {
             _containerRepository.DeleteById(id);
+        }
+
+        public IList<Album> GetAll()
+        {
+            return _containerRepository.GetAll().Select(c => c.ToDomain).ToList();
         }
 
         public Album GetById(int id)

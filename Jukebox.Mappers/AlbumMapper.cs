@@ -25,5 +25,6 @@ namespace Jukebox.Mappers
         public static Album ToDomain(this AlbumEntity albumEntity)
         {
             return new Album { Name = albumEntity.Name, ReleaseDate = albumEntity.ReleaseDate, ItemPlayPrice = albumEntity.ItemPlayPrice, Id = albumEntity.Id };
+        }
     }
 }

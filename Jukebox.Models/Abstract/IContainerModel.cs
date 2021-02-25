@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Jukebox.Models.Abstract
 {
-    public interface IContainerModel
+    public interface IContainerModel : IBaseModel
     {
         String Name { get; set; }
 
