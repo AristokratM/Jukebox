@@ -8,14 +8,15 @@ using Jukebox.Domain.Abstract;
 using Jukebox.Domain;
 using Jukebox.Services.Abstract;
 using Jukebox.Mappers;
+using Jukebox.Entities;
 
 namespace Jukebox.Services
 {
     public class AlbumService : IContainerService<Album>
     {
-        private readonly IContainerRepository _containerRepository;
+        private readonly IContainerRepository<AlbumEntity> _containerRepository;
 
-        public AlbumService(IContainerRepository containerRepository)
+        public AlbumService(IContainerRepository<AlbumEntity> containerRepository)
         {
             _containerRepository = containerRepository;
         }
@@ -26,17 +27,17 @@ namespace Jukebox.Services
 
         public void DeleteById(int id)
         {
-            throw new NotImplementedException();
+            _containerRepository.DeleteById(id);
         }
 
         public Album GetById(int id)
         {
-            throw new NotImplementedException();
+            return _containerRepository.GetById(id).ToDomain();
         }
 
         public void Update(Album container)
         {
-            throw new NotImplementedException();
+            _containerRepository.Update(container.ToEntity());
         }
     }
 }

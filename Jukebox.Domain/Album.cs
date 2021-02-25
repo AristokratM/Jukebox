@@ -8,6 +8,7 @@ namespace Jukebox.Domain
 {
     public class Album : IContainer
     {
+        public Int32 Id { get; set; }
         public string Name { get; set; }
         public DateTime ReleaseDate { get; set; }
         public float ItemPlayPrice { get; set; }

@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Jukebox.Entities.Abstract;
-
 namespace Jukebox.Data.Repositories.Abstract
 {
-    public interface IContainerRepository<T> : IRepository<T> where T:IContainerEntity
+    public interface IContainerItemRepository<T>: IRepository<T> where T:IContainerItemEntity
     {
-        IList<IContainerItemEntity> GetContainerItems(T containerEntity);
+        IList<T> GetContainerItemsFromContainer(IContainerEntity containerEntity);
     }
 }

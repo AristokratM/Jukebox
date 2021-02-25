@@ -11,9 +11,11 @@ namespace Jukebox.Data.Repositories
 {
     public class AlbumRepository : IContainerRepository<AlbumEntity>
     {
-        private static IDictionary<Int32, AlbumEntity> _data; 
-        public AlbumRepository()
+        private static IDictionary<Int32, AlbumEntity> _data;
+        private IContainerItemRepository<SongEntity> _containerItemRepository;
+        public AlbumRepository(IContainerItemRepository<SongEntity> containerItemRepository)
         {
+            _containerItemRepository = containerItemRepository;
             if(_data == null)
             {
                 _data = new Dictionary<Int32, AlbumEntity>();
@@ -21,10 +23,10 @@ namespace Jukebox.Data.Repositories
                     Id = 1,
                     CreatedDate = DateTime.Now,
                     ItemPlayPrice = 50,
-                    Name = "NЮ",
+                    Name = "Буерак",
                     ReleaseDate = new DateTime(2002, 13, 5)
                 };
-                Add(albumEntity);
+                Create(albumEntity);
                 albumEntity = new AlbumEntity
                 {
                     Id = 2,
@@ -33,7 +35,7 @@ namespace Jukebox.Data.Repositories
                     Name = "Album2",
                     ReleaseDate = new DateTime(2007, 14, 6)
                 };
-                Add(albumEntity);
+                Create(albumEntity);
                 albumEntity = new AlbumEntity
                 {
                     Id = 3,
@@ -42,10 +44,10 @@ namespace Jukebox.Data.Repositories
                     Name = "Album3",
                     ReleaseDate = new DateTime(2020, 24, 1)
                 };
-                Add(albumEntity);
+                Create(albumEntity);
             }
         }
-        public void Add(AlbumEntity container)
+        public void Create(AlbumEntity container)
         {
             _data.Add(container.Id, container);
         }
@@ -55,9 +57,19 @@ namespace Jukebox.Data.Repositories
             _data.Remove(id);
         }
 
+        public IList<AlbumEntity> GetAll()
+        {
+            return _data.Values.ToList();
+        }
+
         public AlbumEntity GetById(int id)
         {
             return _data[id];
+        }
+
+        public IList<IContainerItemEntity> GetContainerItems(AlbumEntity albumEntity)
+        {
+            return (IList<IContainerItemEntity>)_containerItemRepository.GetContainerItemsFromContainer(albumEntity);
         }
 
         public void Update(AlbumEntity container)
