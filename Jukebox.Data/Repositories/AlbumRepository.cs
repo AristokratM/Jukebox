@@ -9,11 +9,11 @@ using Jukebox.Entities;
 
 namespace Jukebox.Data.Repositories
 {
-    public class AlbumRepository : IContainerRepository<AlbumEntity>
+    public class AlbumRepository<K> : IContainerRepository<AlbumEntity, K> where K : IContainerItemEntity
     {
         private static IDictionary<Int32, AlbumEntity> _data;
-        private IContainerItemRepository<SongEntity> _containerItemRepository;
-        public AlbumRepository(IContainerItemRepository<SongEntity> containerItemRepository)
+        private IContainerItemRepository<K> _containerItemRepository;
+        public AlbumRepository(IContainerItemRepository<K> containerItemRepository)
         {
             _containerItemRepository = containerItemRepository;
             if(_data == null)
@@ -67,9 +67,9 @@ namespace Jukebox.Data.Repositories
             return _data[id];
         }
 
-        public IList<IContainerItemEntity> GetContainerItems(AlbumEntity albumEntity)
+        public IList<K> GetContainerItems(AlbumEntity albumEntity)
         {
-            return (IList<IContainerItemEntity>)_containerItemRepository.GetContainerItemsFromContainer(albumEntity);
+            return _containerItemRepository.GetContainerItemsFromContainer(albumEntity);
         }
 
         public void Update(AlbumEntity container)

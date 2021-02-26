@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace Jukebox.Services.Abstract
 {
-    public interface IContainerService<T>: IService<T> where T:IContainer
+    public interface IContainerService<T, K>: IService<T> where T:IContainer
     {
-        IList<IContainerItem> GetContainerItems(T container);
+        IList<K> GetContainerItems(T container);
         IList<T> GetFilteredContainers(IFiltrator<IContainer> filtrator);
+
+        IList<K> GetFilteredContainerItemsFromContainers(IList<T> containers, IFiltrator<IContainerItem> filtrator);
     }
 }

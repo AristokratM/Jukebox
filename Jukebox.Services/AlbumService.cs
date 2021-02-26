@@ -11,11 +11,11 @@ using Jukebox.Mappers;
 using Jukebox.Entities;
 namespace Jukebox.Services
 {
-    public class AlbumService : IContainerService<Album>
+    public class AlbumService<Song> : IContainerService<Album, Song> where Song:IContainerItem
     {
-        private readonly IContainerRepository<AlbumEntity> _containerRepository;
+        private readonly IContainerRepository<AlbumEntity, SongEntity> _containerRepository;
 
-        public AlbumService(IContainerRepository<AlbumEntity> containerRepository)
+        public AlbumService(IContainerRepository<AlbumEntity, SongEntity> containerRepository)
         {
             _containerRepository = containerRepository;
         }
@@ -39,9 +39,9 @@ namespace Jukebox.Services
             return _containerRepository.GetById(id).ToDomain();
         }
 
-        public IList<IContainerItem> GetContainerItems(Album container)
+        public IList<Song> GetContainerItems(Album container)
         {
-            return _containerRepository.GetContainerItems(container.ToEntity());
+            return (IList<Song>)_containerRepository.GetContainerItems(container.ToEntity()).Select(s => s.ToDomain()).ToList();
         }
 
         public IList<Album> GetFilteredContainers(IFiltrator<IContainer> filtrator)
@@ -58,6 +58,21 @@ namespace Jukebox.Services
             return filteredAlbums;
         }
 
+        public IList<Song> GetFilteredContainerItemsFromContainers(IList<Album> containers, IFiltrator<IContainerItem> filtrator)
+        {
+            IList<Song> songs = new List<Song>();
+            foreach (var container in containers)
+            {
+                foreach (var containerItem in GetContainerItems(container))
+                {
+                    if (filtrator.Filter(containerItem))
+                    {
+                        songs.Add(containerItem);
+                    }
+                }
+            }
+            return songs;
+        }
         public void Update(Album container)
         {
             _containerRepository.Update(container.ToEntity());

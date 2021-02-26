@@ -46,6 +46,7 @@
     <Compile Include="Abstract\IService.cs" />
     <Compile Include="AlbumService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SongService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Jukebox.Data\Jukebox.Data.csproj">

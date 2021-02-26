@@ -15,5 +15,7 @@ namespace Jukebox.Domain
         public String Author { get; set; }
         public Single Duration { get; set; }
         public Int32 ContainerId { get; set; }
+
+        public Song() { }
     }
 }

@@ -8,7 +8,7 @@ namespace Jukebox.Services.Abstract
 {
     public interface IContainerItemService<T> : IService<T> where T:IContainerItem
     {
-        IList<T> GetFilteredContainerItemsFromContainers(IList<IContainer> containers, IFiltrator<IContainerItem> filtrator);
+       
 
     }
 }

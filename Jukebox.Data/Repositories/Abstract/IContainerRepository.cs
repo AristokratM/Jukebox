@@ -7,8 +7,8 @@ using Jukebox.Entities.Abstract;
 
 namespace Jukebox.Data.Repositories.Abstract
 {
-    public interface IContainerRepository<T> : IRepository<T> where T:IContainerEntity
+    public interface IContainerRepository<T, K> : IRepository<T> where T:IContainerEntity where K : IContainerItemEntity
     {
-        IList<IContainerItemEntity> GetContainerItems(T containerEntity);
+        IList<K> GetContainerItems(T containerEntity);
     }
 }
