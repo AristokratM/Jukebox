@@ -8,7 +8,7 @@ namespace Jukebox.Data.Repositories.Abstract
 {
     public interface IRepository<T> where T: IBaseEntity
     {
-        void Add(T entity);
+        void Create(T entity);
         void Update(T entity);
 
         T GetById(int id);

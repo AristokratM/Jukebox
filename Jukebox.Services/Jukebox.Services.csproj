@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>998e41b0-aab7-45e7-aef7-26b223dc730a</ProjectGuid>
+    <ProjectGuid>{998E41B0-AAB7-45E7-AEF7-26B223DC730A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Jukebox.Services</RootNamespace>
@@ -31,24 +31,43 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Abstract\IContainerItemService.cs" />
+    <Compile Include="Abstract\IContainerService.cs" />
+    <Compile Include="Abstract\IService.cs" />
+    <Compile Include="AlbumService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jukebox.Data\Jukebox.Data.csproj">
+      <Project>{dde7da85-e8f8-479c-af4c-352fc1434345}</Project>
+      <Name>Jukebox.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jukebox.Domain\Jukebox.Domain.csproj">
+      <Project>{573e1b46-f823-4303-88c5-dd73a95b51e5}</Project>
+      <Name>Jukebox.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jukebox.Entities\Jukebox.Entities.csproj">
+      <Project>{bc4db4b9-8272-435f-86d6-d335f50b425f}</Project>
+      <Name>Jukebox.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jukebox.Mappers\Jukebox.Mappers.csproj">
+      <Project>{9005d888-cdbf-49b7-a9b9-16faa61bd343}</Project>
+      <Name>Jukebox.Mappers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jukebox.Models\Jukebox.Models.csproj">
+      <Project>{7CD62C76-4DC1-45A1-97E6-9C2EB42B2BFF}</Project>
+      <Name>Jukebox.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>

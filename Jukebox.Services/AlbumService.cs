@@ -31,7 +31,7 @@ namespace Jukebox.Services
 
         public IList<Album> GetAll()
         {
-            return _containerRepository.GetAll().Select(c => c.ToDomain).ToList();
+            return _containerRepository.GetAll().Select(c => c.ToDomain()).ToList();
         }
 
         public Album GetById(int id)
