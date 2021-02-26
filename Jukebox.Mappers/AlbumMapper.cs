@@ -8,11 +8,11 @@ using Jukebox.Entities;
 using Jukebox.Models;
 namespace Jukebox.Mappers
 {
-    public static class  AlbumMapper
+    public static class AlbumMapper
     {
         public static AlbumEntity ToEntity(this Album album)
         {
-            return new AlbumEntity { Name = album.Name, ReleaseDate = album.ReleaseDate, ItemPlayPrice = album.ItemPlayPrice, Id = album.Id};
+            return new AlbumEntity { Name = album.Name, ReleaseDate = album.ReleaseDate, ItemPlayPrice = album.ItemPlayPrice, Id = album.Id, CreatedDate = DateTime.Now };
         }
         public static Album ToDomain(this AlbumModel albumModel)
         {
