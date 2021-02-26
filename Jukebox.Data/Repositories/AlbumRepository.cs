@@ -24,7 +24,7 @@ namespace Jukebox.Data.Repositories
                     CreatedDate = DateTime.Now,
                     ItemPlayPrice = 50,
                     Name = "Буерак",
-                    ReleaseDate = new DateTime(2002, 13, 5)
+                    ReleaseDate = new DateTime(2002, 5, 4)
                 };
                 Create(albumEntity);
                 albumEntity = new AlbumEntity
@@ -33,7 +33,7 @@ namespace Jukebox.Data.Repositories
                     CreatedDate = DateTime.Now,
                     ItemPlayPrice = 30,
                     Name = "Album2",
-                    ReleaseDate = new DateTime(2007, 14, 6)
+                    ReleaseDate = new DateTime(2007, 2, 6)
                 };
                 Create(albumEntity);
                 albumEntity = new AlbumEntity
@@ -42,7 +42,7 @@ namespace Jukebox.Data.Repositories
                     CreatedDate = DateTime.Now,
                     ItemPlayPrice = 70,
                     Name = "Album3",
-                    ReleaseDate = new DateTime(2020, 24, 1)
+                    ReleaseDate = new DateTime(2020, 3, 1)
                 };
                 Create(albumEntity);
             }

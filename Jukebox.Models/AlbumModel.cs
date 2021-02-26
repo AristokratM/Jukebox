@@ -12,5 +12,10 @@ namespace Jukebox.Models
         public string Name { get; set; }
         public DateTime ReleaseDate { get; set; }
         public float ItemPlayPrice { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("{0} {1} {2}", Name, ReleaseDate, ItemPlayPrice);
+        }
     }
 }

@@ -11,13 +11,14 @@ namespace Jukebox.Data.Repositories
 {
     public class SongRepository : IContainerItemRepository<SongEntity>
     {
-        private static readonly IDictionary<Int32, SongEntity> _data;
+        private static  IDictionary<Int32, SongEntity> _data;
 
         public SongRepository()
         {
             if(_data == null)
             {
-                AlbumRepository albumRepository = new AlbumRepository(this);
+                _data = new Dictionary<Int32, SongEntity>();
+                AlbumRepository<SongEntity> albumRepository = new AlbumRepository<SongEntity>(this);
                 IList<AlbumEntity> albumEntities = albumRepository.GetAll();
                 SongEntity songEntity;
                 songEntity = new SongEntity { 
@@ -33,7 +34,7 @@ namespace Jukebox.Data.Repositories
                 Create(songEntity);
                 songEntity = new SongEntity
                 {
-                    ContainerId = albumEntities[0].Id,
+                    ContainerId = albumEntities[1].Id,
                     Name = "Song2",
                     Genre = "Genre2",
                     Performer = "Performer2",
@@ -45,26 +46,26 @@ namespace Jukebox.Data.Repositories
                 Create(songEntity);
                 songEntity = new SongEntity
                 {
-                    ContainerId = albumEntities[0].Id,
+                    ContainerId = albumEntities[1].Id,
                     Name = "Song3",
                     Genre = "Genre3",
                     Performer = "Performer3",
                     Author = "Author2",
                     Duration = 5.22f,
                     CreatedDate = DateTime.Now,
-                    Id = 2
+                    Id = 3
                 };
                 Create(songEntity);
                 songEntity = new SongEntity
                 {
-                    ContainerId = albumEntities[0].Id,
+                    ContainerId = albumEntities[2].Id,
                     Name = "Song4",
                     Genre = "Genre2",
                     Performer = "Performer2",
                     Author = "Author2",
                     Duration = 1.12f,
                     CreatedDate = DateTime.Now,
-                    Id = 2
+                    Id = 4
                 };
                 Create(songEntity);
 

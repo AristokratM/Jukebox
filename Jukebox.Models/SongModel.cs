@@ -15,5 +15,10 @@ namespace Jukebox.Models
         public String Author { get; set; }
         public Single Duration { get; set; }
         public Int32 ContainerId { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("{0} {1} {2} {3} {4}", Name, Genre, Author, Performer, Duration);
+        }
     }
 }
