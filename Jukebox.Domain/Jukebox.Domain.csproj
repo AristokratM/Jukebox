@@ -46,6 +46,8 @@
     <Compile Include="Abstract\IContainerItem.cs" />
     <Compile Include="Abstract\IFiltrator.cs" />
     <Compile Include="Album.cs" />
+    <Compile Include="Filters\ContainerFilter.cs" />
+    <Compile Include="Filters\ContainerItemFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Song.cs" />
   </ItemGroup>

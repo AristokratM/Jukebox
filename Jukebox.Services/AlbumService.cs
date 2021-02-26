@@ -39,6 +39,25 @@ namespace Jukebox.Services
             return _containerRepository.GetById(id).ToDomain();
         }
 
+        public IList<IContainerItem> GetContainerItems(Album container)
+        {
+            return _containerRepository.GetContainerItems(container.ToEntity());
+        }
+
+        public IList<Album> GetFilteredContainers(IFiltrator<IContainer> filtrator)
+        {
+            IList<Album> albums = _containerRepository.GetAll().Select(c => c.ToDomain()).ToList();
+            IList<Album> filteredAlbums = new List<Album>();
+            foreach (var album in albums)
+            {
+                if(filtrator.Filter(album))
+                {
+                    filteredAlbums.Add(album);
+                }
+            }
+            return filteredAlbums;
+        }
+
         public void Update(Album container)
         {
             _containerRepository.Update(container.ToEntity());
