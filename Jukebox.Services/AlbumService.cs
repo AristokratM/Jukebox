@@ -11,13 +11,13 @@ using Jukebox.Mappers;
 using Jukebox.Entities;
 namespace Jukebox.Services
 {
-    public class AlbumService<Song> : IContainerService<Album, Song> where Song:IContainerItem
+    public class AlbumService<Song> : IContainerService<Album, Song> where Song : IContainerItem
     {
         private readonly IContainerRepository<AlbumEntity, SongEntity> _containerRepository;
-
         public AlbumService(IContainerRepository<AlbumEntity, SongEntity> containerRepository)
         {
             _containerRepository = containerRepository;
+            
         }
         public void Create(Album container)
         {
