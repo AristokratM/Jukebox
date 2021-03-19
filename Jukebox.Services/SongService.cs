@@ -13,7 +13,7 @@ using Jukebox.Data.UnitOfWork.Abstract;
 
 namespace Jukebox.Services
 {
-    public class SongService : IContainerItemService<Song>
+    public class SongService : ISongService<Song, int>
     {
         private readonly IUnitOfWork unitOfWork;
 

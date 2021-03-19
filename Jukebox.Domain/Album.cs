@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Jukebox.Domain.Abstract;
 namespace Jukebox.Domain
 {
-    public class Album : IContainer
+    public class Album : IBase<int>
     {
-        public Int32 Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public DateTime ReleaseDate { get; set; }
         public float ItemPlayPrice { get; set; }

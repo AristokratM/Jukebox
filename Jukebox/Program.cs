@@ -16,7 +16,7 @@ namespace Jukebox
         static void Main(string[] args)
         {
             IDataReader dataReader = new ConsoleDataReader();
-            IContainerService<Album, Song> containerService = new AlbumService<Song>(new UnitOfWork());
+            IAlbumService<Album, int> containerService = new AlbumService(new UnitOfWork());
             var jukebox = new Jukebox(containerService);
             var filteredContainerItems = jukebox.GetFilteredContainerItemFromFilteredContainers(dataReader.GetContainerFilter(), dataReader.GetContainerItemFilter());
             foreach (var containerItem in filteredContainerItems)

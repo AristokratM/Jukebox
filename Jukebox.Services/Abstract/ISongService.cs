@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Jukebox.Domain.Abstract;
 namespace Jukebox.Services.Abstract
 {
-    public interface IContainerItemService<T> : IService<T> where T:IContainerItem
+    public interface ISongService<T, K> : IService<T, K> where T:IBase<K>
     {
        
 

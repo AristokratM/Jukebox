@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IContainerItemService.cs" />
-    <Compile Include="Abstract\IContainerService.cs" />
+    <Compile Include="Abstract\ISongService.cs" />
+    <Compile Include="Abstract\IAlbumService.cs" />
     <Compile Include="Abstract\IService.cs" />
     <Compile Include="AlbumService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

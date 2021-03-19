@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Jukebox.Domain.Abstract;
 namespace Jukebox.Services.Abstract
 {
-    public interface IService<T> where T: IBase
+    public interface IService<T, K> where T: IBase<K>
     {
         void Create(T dto);
         void Update(T dto);
-        T GetById(int id);
-        void DeleteById(int id);
+        T GetById(K id);
+        void DeleteById(K id);
 
         IList<T> GetAll();
     }

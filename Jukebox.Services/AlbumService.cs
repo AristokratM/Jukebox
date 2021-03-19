@@ -13,7 +13,7 @@ using Jukebox.Data.UnitOfWork.Abstract;
 
 namespace Jukebox.Services
 {
-    public class AlbumService<Song> : IContainerService<Album, Song> where Song : IContainerItem
+    public class AlbumService : IAlbumService<Album, int>
     {
         private readonly IUnitOfWork unitOfWork;
         public AlbumService(IUnitOfWork unitOfWork)
@@ -43,10 +43,10 @@ namespace Jukebox.Services
 
         public IList<Song> GetContainerItems(Album container)
         {
-            return (IList<Song>)unitOfWork.AlbumRepository.GetAlbumItems(container.ToEntity()).Select(s => s.ToDomain()).ToList();
+            return unitOfWork.AlbumRepository.GetAlbumItems(container.ToEntity()).Select(s => s.ToDomain()).ToList();
         }
 
-        public IList<Album> GetFilteredContainers(IFiltrator<IContainer> filtrator)
+        public IList<Album> GetFilteredContainers(IFiltrator<Album> filtrator)
         {
             IList<Album> albums = unitOfWork.AlbumRepository.GetAll().Select(c => c.ToDomain()).ToList();
             IList<Album> filteredAlbums = new List<Album>();
@@ -60,7 +60,7 @@ namespace Jukebox.Services
             return filteredAlbums;
         }
 
-        public IList<Song> GetFilteredContainerItemsFromContainers(IList<Album> containers, IFiltrator<IContainerItem> filtrator)
+        public IList<Song> GetFilteredContainerItemsFromContainers(IList<Album> containers, IFiltrator<Song> filtrator)
         {
             IList<Song> songs = new List<Song>();
             foreach (var container in containers)

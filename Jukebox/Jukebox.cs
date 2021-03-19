@@ -11,15 +11,15 @@ namespace Jukebox
 {
     class Jukebox
     {
-       private  IContainerService<Album,Song> _containerService; 
-        public Jukebox(IContainerService<Album, Song> containerService)
+       private  IAlbumService<Album,int> containerService; 
+        public Jukebox(IAlbumService<Album, int> containerService)
         {
-            _containerService = containerService;
+            this.containerService = containerService;
         }
-       public IList<SongModel> GetFilteredContainerItemFromFilteredContainers(IFiltrator<IContainer> containerFiltrator, IFiltrator<IContainerItem> containerItemFiltrator)
+       public IList<SongModel> GetFilteredContainerItemFromFilteredContainers(IFiltrator<Album> containerFiltrator, IFiltrator<Song> containerItemFiltrator)
         {
-            IList<Album> filteredAlbums = _containerService.GetFilteredContainers(containerFiltrator);
-            IList<Song> filteredSongsFromContainers = _containerService.GetFilteredContainerItemsFromContainers(filteredAlbums, containerItemFiltrator);
+            IList<Album> filteredAlbums = containerService.GetFilteredContainers(containerFiltrator);
+            IList<Song> filteredSongsFromContainers = containerService.GetFilteredContainerItemsFromContainers(filteredAlbums, containerItemFiltrator);
             return filteredSongsFromContainers.Select(s => s.ToModel()).ToList();
         }
 

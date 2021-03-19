@@ -4,17 +4,19 @@ using System.Text;
 using Jukebox.Abstract;
 using Jukebox.Domain.Filters;
 using Jukebox.Domain.Abstract;
+using Jukebox.Domain;
+
 namespace Jukebox
 {
     public class ConsoleDataReader : IDataReader
     {
-        public IFiltrator<IContainer> GetContainerFilter()
+        public IFiltrator<Album> GetContainerFilter()
         {
             return new ContainerFilter(GetUserBalance(), GetContainerName());
         }
 
 
-        public IFiltrator<IContainerItem> GetContainerItemFilter()
+        public IFiltrator<Song> GetContainerItemFilter()
         {
             return new ContainerItemFilter(GetContainerItemAuthor(), GetContainerItemGenre(), GetContainerItemPerformer());
         }
