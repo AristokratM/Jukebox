@@ -16,11 +16,11 @@ namespace Jukebox
         {
             this.containerService = containerService;
         }
-       public IList<SongModel> GetFilteredContainerItemFromFilteredContainers(IFiltrator<Album> containerFiltrator, IFiltrator<Song> containerItemFiltrator)
+       public IList<Song> GetFilteredContainerItemFromFilteredContainers(IFiltrator<Album> containerFiltrator, IFiltrator<Song> containerItemFiltrator)
         {
             IList<Album> filteredAlbums = containerService.GetFilteredContainers(containerFiltrator);
             IList<Song> filteredSongsFromContainers = containerService.GetFilteredContainerItemsFromContainers(filteredAlbums, containerItemFiltrator);
-            return filteredSongsFromContainers.Select(s => s.ToModel()).ToList();
+            return filteredSongsFromContainers;
         }
 
     }

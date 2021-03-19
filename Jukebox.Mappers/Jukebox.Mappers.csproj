@@ -54,10 +54,6 @@
       <Project>{bc4db4b9-8272-435f-86d6-d335f50b425f}</Project>
       <Name>Jukebox.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Jukebox.Models\Jukebox.Models.csproj">
-      <Project>{7cd62c76-4dc1-45a1-97e6-9c2eb42b2bff}</Project>
-      <Name>Jukebox.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -65,10 +65,6 @@
       <Project>{9005d888-cdbf-49b7-a9b9-16faa61bd343}</Project>
       <Name>Jukebox.Mappers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Jukebox.Models\Jukebox.Models.csproj">
-      <Project>{7CD62C76-4DC1-45A1-97E6-9C2EB42B2BFF}</Project>
-      <Name>Jukebox.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

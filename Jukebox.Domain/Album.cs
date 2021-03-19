@@ -12,5 +12,10 @@ namespace Jukebox.Domain
         public string Name { get; set; }
         public DateTime ReleaseDate { get; set; }
         public float ItemPlayPrice { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name} {ItemPlayPrice} {ReleaseDate}";
+        }
     }
 }
