@@ -47,6 +47,8 @@
     <Compile Include="Repositories\Abstract\IRepository.cs" />
     <Compile Include="Repositories\AlbumRepository.cs" />
     <Compile Include="Repositories\SongRepository.cs" />
+    <Compile Include="UnitOfWork\Abstract\IUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Jukebox.Entities\Jukebox.Entities.csproj">

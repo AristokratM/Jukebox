@@ -9,44 +9,46 @@ using Jukebox.Domain;
 using Jukebox.Services.Abstract;
 using Jukebox.Mappers;
 using Jukebox.Entities;
+using Jukebox.Data.UnitOfWork.Abstract;
+
 namespace Jukebox.Services
 {
     public class AlbumService<Song> : IContainerService<Album, Song> where Song : IContainerItem
     {
-        private readonly IAlbumRepository<AlbumEntity, int> _containerRepository;
-        public AlbumService(IAlbumRepository<AlbumEntity, int> containerRepository)
+        private readonly IUnitOfWork unitOfWork;
+        public AlbumService(IUnitOfWork unitOfWork)
         {
-            _containerRepository = containerRepository;
+            this.unitOfWork = unitOfWork;
             
         }
         public void Create(Album container)
         {
-            _containerRepository.Create(container.ToEntity());
+            unitOfWork.AlbumRepository.Create(container.ToEntity());
         }
 
         public void DeleteById(int id)
         {
-            _containerRepository.DeleteById(id);
+            unitOfWork.AlbumRepository.DeleteById(id);
         }
 
         public IList<Album> GetAll()
         {
-            return _containerRepository.GetAll().Select(c => c.ToDomain()).ToList();
+            return unitOfWork.AlbumRepository.GetAll().Select(c => c.ToDomain()).ToList();
         }
 
         public Album GetById(int id)
         {
-            return _containerRepository.GetById(id).ToDomain();
+            return unitOfWork.AlbumRepository.GetById(id).ToDomain();
         }
 
         public IList<Song> GetContainerItems(Album container)
         {
-            return (IList<Song>)_containerRepository.GetAlbumItems(container.ToEntity()).Select(s => s.ToDomain()).ToList();
+            return (IList<Song>)unitOfWork.AlbumRepository.GetAlbumItems(container.ToEntity()).Select(s => s.ToDomain()).ToList();
         }
 
         public IList<Album> GetFilteredContainers(IFiltrator<IContainer> filtrator)
         {
-            IList<Album> albums = _containerRepository.GetAll().Select(c => c.ToDomain()).ToList();
+            IList<Album> albums = unitOfWork.AlbumRepository.GetAll().Select(c => c.ToDomain()).ToList();
             IList<Album> filteredAlbums = new List<Album>();
             foreach (var album in albums)
             {
@@ -75,7 +77,7 @@ namespace Jukebox.Services
         }
         public void Update(Album container)
         {
-            _containerRepository.Update(container.ToEntity());
+            unitOfWork.AlbumRepository.Update(container.ToEntity());
         }
     }
 }

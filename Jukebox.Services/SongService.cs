@@ -9,41 +9,42 @@ using Jukebox.Data.Repositories.Abstract;
 using Jukebox.Entities;
 using Jukebox.Mappers;
 using Jukebox.Domain.Abstract;
+using Jukebox.Data.UnitOfWork.Abstract;
 
 namespace Jukebox.Services
 {
     public class SongService : IContainerItemService<Song>
     {
-        private readonly ISongRepository<SongEntity, int> _containerItemRepository;
+        private readonly IUnitOfWork unitOfWork;
 
-        public SongService(ISongRepository<SongEntity, int> containerItemRepository)
+        public SongService(IUnitOfWork unitOfWork)
         {
-            _containerItemRepository = containerItemRepository;
+            this.unitOfWork = unitOfWork;
         }
         public void Create(Song dto)
         {
-            _containerItemRepository.Create(dto.ToEntity());
+            unitOfWork.SongRepository.Create(dto.ToEntity());
         }
 
         public void DeleteById(int id)
         {
-            _containerItemRepository.DeleteById(id);
+            unitOfWork.SongRepository.DeleteById(id);
         }
 
         public IList<Song> GetAll()
         {
-            return _containerItemRepository.GetAll().Select(s=> s.ToDomain()).ToList();
+            return unitOfWork.SongRepository.GetAll().Select(s=> s.ToDomain()).ToList();
         }
 
         public Song GetById(int id)
         {
-            return _containerItemRepository.GetById(id).ToDomain();
+            return unitOfWork.SongRepository.GetById(id).ToDomain();
         }
 
 
         public void Update(Song dto)
         {
-            _containerItemRepository.Update(dto.ToEntity());
+            unitOfWork.SongRepository.Update(dto.ToEntity());
         }
 
         
