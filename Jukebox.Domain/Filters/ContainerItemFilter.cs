@@ -6,33 +6,33 @@ using System.Threading.Tasks;
 using Jukebox.Domain.Abstract;
 namespace Jukebox.Domain.Filters
 {
-    public class ContainerItemFilter : IFiltrator<IContainerItem>
+    public class ContainerItemFilter : IFiltrator<Song>
     {
-        private String Author { get; set; }
-        private String Genre { get; set; }
-        private String Performer { get; set; }
-        public ContainerItemFilter(String author, String genre, String performer)
+        private string Author { get; set; }
+        private string Genre { get; set; }
+        private string Performer { get; set; }
+        public ContainerItemFilter(string author, string genre, string performer)
         {
             Author = author;
             Genre = genre;
             Performer = performer;
         }
-        public Boolean Filter(IContainerItem model)
+        public bool Filter(Song model)
         {
             return AuthorFilter(model) && GenreFilter(model) && PerformerFilter(model);
         }
 
-        private Boolean AuthorFilter(IContainerItem model)
+        private bool AuthorFilter(Song model)
         {
             return Author.Equals("") || Author.Equals(model.Author);
         }
 
-        private Boolean GenreFilter(IContainerItem model)
+        private bool GenreFilter(Song model)
         {
             return Genre.Equals("") || Genre.Equals(model.Genre);
         }
 
-        private Boolean PerformerFilter(IContainerItem model)
+        private bool PerformerFilter(Song model)
         {
             return Performer.Equals("") || Performer.Equals(model.Performer);
         }

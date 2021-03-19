@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 using Jukebox.Domain.Abstract;
 namespace Jukebox.Domain.Filters
 {
-    public class ContainerFilter : IFiltrator<IContainer>
+    public class ContainerFilter : IFiltrator<Album>
     {
-        private String Name { get; set; }
+        private string Name { get; set; }
 
-        private Single Balance { get; set; }
-        public ContainerFilter(Single balance, String name)
+        private float Balance { get; set; }
+        public ContainerFilter(float balance, string name)
         {
             Name = name;
             Balance = balance;
         }
-        public bool Filter(IContainer model)
+        public bool Filter(Album model)
         {
             return NameFilter(model) && BalanceFilter(model);
         }
 
-        private bool NameFilter(IContainer model)
+        private bool NameFilter(Album model)
         {
             return Name.Equals("") || Name.Equals(model.Name);
         }
 
-        private bool BalanceFilter(IContainer model)
+        private bool BalanceFilter(Album model)
         {
             return Balance >= model.ItemPlayPrice;
         }

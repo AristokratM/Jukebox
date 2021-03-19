@@ -8,6 +8,6 @@ namespace Jukebox.Domain.Abstract
 {
     public interface IFiltrator<T>
     {
-         Boolean Filter(T model);
+         bool Filter(T model);
     }
 }

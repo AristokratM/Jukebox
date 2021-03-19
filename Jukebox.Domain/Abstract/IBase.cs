@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Jukebox.Domain.Abstract
 {
-    public interface IBase
+    public interface IBase<K>
     {
-        Int32 Id { get; set; }
+        K Id { get; set; }
     }
 }

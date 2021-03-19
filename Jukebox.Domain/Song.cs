@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 using Jukebox.Domain.Abstract;
 namespace Jukebox.Domain
 {
-    public class Song : IContainerItem
+    public class Song : IBase<int>
     {
-        public Int32 Id { get; set; }
-        public String Name { get; set; }
-        public String Performer { get; set; }
-        public String Genre { get; set; }
-        public String Author { get; set; }
-        public Single Duration { get; set; }
-        public Int32 ContainerId { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Performer { get; set; }
+        public string Genre { get; set; }
+        public string Author { get; set; }
+        public float Duration { get; set; }
+        public int ContainerId { get; set; }
 
-        public Song() { }
     }
 }
