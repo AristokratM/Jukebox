@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Jukebox.Entities.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Jukebox.Entities.Abstract;
 namespace Jukebox.Entities
 {
-    public class AlbumEntity : IContainerEntity
+    public class AlbumEntity : IBaseEntity<int>
     {
         public int Id { get; set ; }
         public DateTime CreatedDate { get; set; }

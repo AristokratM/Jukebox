@@ -1,21 +1,21 @@
-﻿using System;
+﻿using Jukebox.Entities.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Jukebox.Entities.Abstract;
 namespace Jukebox.Entities
 {
-    public class SongEntity : IContainerItemEntity
+    public class SongEntity : IBaseEntity<int>
     {
-        public String Name { get; set; }
-        public String Genre { get; set; }
-        public String Author { get; set; }
-        public String Performer { get; set; }
-        public Int32 Id { get; set; }
-        public Single Duration { get; set; }
+        public string Name { get; set; }
+        public string Genre { get; set; }
+        public string Author { get; set; }
+        public string Performer { get; set; }
+        public int Id { get; set; }
+        public float Duration { get; set; }
         public DateTime CreatedDate { get; set; }
-        public Int32 ContainerId { get; set; }
+        public int ContainerId { get; set; }
 
     }
 }

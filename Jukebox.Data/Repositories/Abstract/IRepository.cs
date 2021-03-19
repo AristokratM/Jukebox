@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 using Jukebox.Entities.Abstract;
 namespace Jukebox.Data.Repositories.Abstract
 {
-    public interface IRepository<T> where T: IBaseEntity
+    public interface IRepository<T, K> where T: IBaseEntity<K>
     {
         void Create(T entity);
         void Update(T entity);
 
-        T GetById(int id);
+        T GetById(K id);
 
-        void DeleteById(int id);
+        void DeleteById(K id);
 
         IList<T> GetAll();
     }

@@ -14,9 +14,9 @@ namespace Jukebox.Services
 {
     public class SongService : IContainerItemService<Song>
     {
-        private readonly IContainerItemRepository<SongEntity> _containerItemRepository;
+        private readonly ISongRepository<SongEntity, int> _containerItemRepository;
 
-        public SongService(IContainerItemRepository<SongEntity> containerItemRepository)
+        public SongService(ISongRepository<SongEntity, int> containerItemRepository)
         {
             _containerItemRepository = containerItemRepository;
         }

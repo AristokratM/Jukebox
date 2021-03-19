@@ -42,8 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Abstract\IContainerItemRepository.cs" />
-    <Compile Include="Repositories\Abstract\IContainerRepository.cs" />
+    <Compile Include="Repositories\Abstract\ISongRepository.cs" />
+    <Compile Include="Repositories\Abstract\IAlbumRepository.cs" />
     <Compile Include="Repositories\Abstract\IRepository.cs" />
     <Compile Include="Repositories\AlbumRepository.cs" />
     <Compile Include="Repositories\SongRepository.cs" />

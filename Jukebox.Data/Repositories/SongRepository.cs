@@ -9,7 +9,7 @@ using Jukebox.Entities.Abstract;
 
 namespace Jukebox.Data.Repositories
 {
-    public class SongRepository : IContainerItemRepository<SongEntity>
+    public class SongRepository : ISongRepository<SongEntity, int>
     {
         private static  IDictionary<Int32, SongEntity> _data;
 
@@ -18,7 +18,7 @@ namespace Jukebox.Data.Repositories
             if(_data == null)
             {
                 _data = new Dictionary<Int32, SongEntity>();
-                AlbumRepository<SongEntity> albumRepository = new AlbumRepository<SongEntity>(this);
+                AlbumRepository albumRepository = new AlbumRepository(this);
                 IList<AlbumEntity> albumEntities = albumRepository.GetAll();
                 SongEntity songEntity;
                 songEntity = new SongEntity { 
@@ -91,9 +91,17 @@ namespace Jukebox.Data.Repositories
             return _data[id];
         }
 
-        public IList<SongEntity> GetContainerItemsFromContainer(IContainerEntity containerEntity)
+        public IList<SongEntity> GetSongsFromContainer(AlbumEntity containerEntity)
         {
-            return GetAll().Where(se => se.ContainerId == containerEntity.Id).ToList();
+            IList<SongEntity> result = new List<SongEntity>();
+            foreach (var song in GetAll())
+            {
+                if(song.ContainerId == containerEntity.Id)
+                {
+                    result.Add(song);
+                }
+            }
+            return result;
         }
 
         public void Update(SongEntity entity)

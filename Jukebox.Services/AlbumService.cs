@@ -13,8 +13,8 @@ namespace Jukebox.Services
 {
     public class AlbumService<Song> : IContainerService<Album, Song> where Song : IContainerItem
     {
-        private readonly IContainerRepository<AlbumEntity, SongEntity> _containerRepository;
-        public AlbumService(IContainerRepository<AlbumEntity, SongEntity> containerRepository)
+        private readonly IAlbumRepository<AlbumEntity, int> _containerRepository;
+        public AlbumService(IAlbumRepository<AlbumEntity, int> containerRepository)
         {
             _containerRepository = containerRepository;
             
@@ -41,7 +41,7 @@ namespace Jukebox.Services
 
         public IList<Song> GetContainerItems(Album container)
         {
-            return (IList<Song>)_containerRepository.GetContainerItems(container.ToEntity()).Select(s => s.ToDomain()).ToList();
+            return (IList<Song>)_containerRepository.GetAlbumItems(container.ToEntity()).Select(s => s.ToDomain()).ToList();
         }
 
         public IList<Album> GetFilteredContainers(IFiltrator<IContainer> filtrator)

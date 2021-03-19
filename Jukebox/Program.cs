@@ -12,7 +12,7 @@ namespace Jukebox
     class Program
     {
         private static IDataReader dataReader = new ConsoleDataReader();
-        private static IContainerService<Album, Song> containerService = new AlbumService<Song>(new AlbumRepository<SongEntity>(new SongRepository()));
+        private static IContainerService<Album, Song> containerService = new AlbumService<Song>(new AlbumRepository(new SongRepository()));
         static void Main(string[] args)
         {
 

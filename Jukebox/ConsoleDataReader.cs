@@ -43,10 +43,19 @@ namespace Jukebox
             return Console.ReadLine();
         }
 
-        private Single GetUserBalance()
+        private float GetUserBalance()
         {
             Console.WriteLine("Waiting user balance from system...");
-            return Convert.ToSingle(Console.ReadLine());
+            float balance;
+            try
+            {
+               balance = Convert.ToSingle(Console.ReadLine());
+            }
+            catch(FormatException)
+            {
+                balance = 0;
+            }
+            return balance;
 
         }
     }

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Jukebox.Entities;
 using Jukebox.Entities.Abstract;
-
 namespace Jukebox.Data.Repositories.Abstract
 {
-    public interface IContainerRepository<T, K> : IRepository<T> where T:IContainerEntity where K : IContainerItemEntity
+    public interface ISongRepository<T, K>: IRepository<T, K> where T:IBaseEntity<K>
     {
-        IList<K> GetContainerItems(T containerEntity);
+        IList<T> GetSongsFromContainer(AlbumEntity container);
     }
 }
