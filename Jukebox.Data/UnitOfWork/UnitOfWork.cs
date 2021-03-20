@@ -38,9 +38,5 @@ namespace Jukebox.Data.UnitOfWork
             }
         }
 
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
-        }
     }
 }
