@@ -22,10 +22,11 @@ namespace WpfApp
 {
     public partial class MainWindow : Window
     {
-        public MainWindow()
+
+        public MainWindow(ApplicationViewModel applicationViewModel)
         {
             InitializeComponent();
-            DataContext = new ApplicationViewModel(new AlbumService(new UnitOfWork()));
+            DataContext = applicationViewModel;
         }
     }
 }

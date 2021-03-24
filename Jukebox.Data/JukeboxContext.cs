@@ -12,7 +12,7 @@ namespace Jukebox.Data
     {
         static JukeboxContext()
         {
-            Database.SetInitializer<JukeboxContext>(new MyContextInitializer());
+            //Database.SetInitializer<JukeboxContext>(new MyContextInitializer());
         }
         public JukeboxContext() : base("DbConnection")
         {
