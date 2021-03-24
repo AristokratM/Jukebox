@@ -18,7 +18,7 @@ namespace Jukebox.Data.Repositories
             _containerItemRepository = containerItemRepository;
             if(_data == null)
             {
-                _data = new Dictionary<Int32, AlbumEntity>();
+                _data = new Dictionary<int, AlbumEntity>();
                 AlbumEntity albumEntity = new AlbumEntity {
                     Id = 1,
                     CreatedDate = DateTime.Now,
