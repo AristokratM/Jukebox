@@ -14,13 +14,14 @@ namespace Jukebox.Data.UnitOfWork
     {
         private IAlbumRepository<AlbumEntity, int> albumRepository;
         private ISongRepository<SongEntity, int> songRepository;
+        private JukeboxContext context = new JukeboxContext();
         public IAlbumRepository<AlbumEntity, int> AlbumRepository
         {
             get
             {
                 if(albumRepository == null)
                 {
-                    albumRepository = new AlbumRepository(SongRepository);
+                    albumRepository = new AlbumRepository(context);
                 }
                 return albumRepository;
             }
@@ -32,11 +33,32 @@ namespace Jukebox.Data.UnitOfWork
             {
                 if(songRepository == null)
                 {
-                    songRepository = new SongRepository();
+                    songRepository = new SongRepository(context);
                 }
                 return songRepository;
             }
         }
+        public void Save()
+        {
+            context.SaveChanges();
+        }
 
+        private bool disposed = false;
+        protected virtual void Dispose(bool disposing)
+        {
+            if(!this.disposed)
+            {
+                if(disposing)
+                {
+                    context.Dispose();
+                }
+            }
+            this.disposed = true;
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
     }
 }

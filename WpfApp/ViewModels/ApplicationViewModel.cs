@@ -81,6 +81,7 @@ namespace WpfApp.ViewModels
         public ApplicationViewModel(IAlbumService<Album, int> albumService)
         {
             this.albumService = albumService;
+            Songs = new ObservableCollection<Song>();
         }
         public ObservableCollection<Song> Songs { get; set; }
 

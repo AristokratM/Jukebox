@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Jukebox.Data\Jukebox.Data.csproj" />
     <ProjectReference Include="..\Jukebox.Domain\Jukebox.Domain.csproj" />
     <ProjectReference Include="..\Jukebox.Mappers\Jukebox.Mappers.csproj" />

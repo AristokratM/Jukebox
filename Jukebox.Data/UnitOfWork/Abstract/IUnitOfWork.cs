@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Jukebox.Data.UnitOfWork.Abstract
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
         IAlbumRepository<AlbumEntity, int> AlbumRepository { get; }
 
