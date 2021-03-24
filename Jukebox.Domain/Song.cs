@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Jukebox.Domain.Abstract;
 namespace Jukebox.Domain
 {
-    public class Song : INotifyPropertyChanged, IBase<int>
+    public class Song : IBase<int>
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -18,12 +18,6 @@ namespace Jukebox.Domain
         public float Duration { get; set; }
         public int ContainerId { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }
 
         public override string ToString()
         {
