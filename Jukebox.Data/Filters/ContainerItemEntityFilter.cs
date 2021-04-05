@@ -1,38 +1,40 @@
-﻿using System;
+﻿using Jukebox.Data.Filters.Abstract;
+using Jukebox.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Jukebox.Domain.Abstract;
-namespace Jukebox.Domain.Filters
+
+namespace Jukebox.Data.Filters
 {
-    public class ContainerItemFilter : IFiltrator<Song>
+     public class ContainerItemEntityFilter : IEntityFiltrator<SongEntity>
     {
         public string Author { get; set; }
         public string Genre { get; set; }
         public string Performer { get; set; }
-        public ContainerItemFilter(string author, string genre, string performer)
+        public ContainerItemEntityFilter(string author, string genre, string performer)
         {
             Author = author;
             Genre = genre;
             Performer = performer;
         }
-        public bool Filter(Song model)
+        public bool Filter(SongEntity model)
         {
             return AuthorFilter(model) && GenreFilter(model) && PerformerFilter(model);
         }
 
-        private bool AuthorFilter(Song model)
+        private bool AuthorFilter(SongEntity model)
         {
             return Author.Equals("") || Author.Equals(model.Author);
         }
 
-        private bool GenreFilter(Song model)
+        private bool GenreFilter(SongEntity model)
         {
             return Genre.Equals("") || Genre.Equals(model.Genre);
         }
 
-        private bool PerformerFilter(Song model)
+        private bool PerformerFilter(SongEntity model)
         {
             return Performer.Equals("") || Performer.Equals(model.Performer);
         }

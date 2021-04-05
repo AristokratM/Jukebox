@@ -29,7 +29,6 @@
             <TextBox Text="{Binding Path=Author}" />
             <TextBlock Text="Виконавець"/>
             <TextBox Text="{Binding Path=Performer}" />
-            <Button Command="{Binding DisplayCommand}">Check</Button>
             <Button Command="{Binding FindCommand}">Find</Button>
          </StackPanel>
 

@@ -10,6 +10,7 @@ using Jukebox.Services.Abstract;
 using Jukebox.Mappers;
 using Jukebox.Entities;
 using Jukebox.Data.UnitOfWork.Abstract;
+using Jukebox.Domain.Filters;
 
 namespace Jukebox.Services
 {
@@ -48,32 +49,14 @@ namespace Jukebox.Services
 
         public IList<Album> GetFilteredContainers(IFiltrator<Album> filtrator)
         {
-            IList<Album> albums = unitOfWork.AlbumRepository.GetAll().Select(c => c.ToDomain()).ToList();
-            IList<Album> filteredAlbums = new List<Album>();
-            foreach (var album in albums)
-            {
-                if(filtrator.Filter(album))
-                {
-                    filteredAlbums.Add(album);
-                }
-            }
-            return filteredAlbums;
+            return unitOfWork.AlbumRepository.GetFilteredAlbums(((ContainerFilter)filtrator).ToEntity()).Select(s=>s.ToDomain()).ToList();
         }
 
         public IList<Song> GetFilteredContainerItemsFromContainers(IList<Album> containers, IFiltrator<Song> filtrator)
         {
-            IList<Song> songs = new List<Song>();
-            foreach (var container in containers)
-            {
-                foreach (var containerItem in GetContainerItems(container))
-                {
-                    if (filtrator.Filter(containerItem))
-                    {
-                        songs.Add(containerItem);
-                    }
-                }
-            }
-            return songs;
+            return unitOfWork.AlbumRepository.GetFilteredContainerItemsFromAlbums(
+                containers.Select(s => s.ToEntity()).ToList(), 
+                ((ContainerItemFilter)filtrator).ToEntity()).Select(s => s.ToDomain()).ToList();
         }
         public void Update(Album container)
         {

@@ -43,17 +43,6 @@ namespace WpfApp.ViewModels
             get { return performer; }
             set { performer = value; OnPropertyChanged(nameof(Performer)); }
         }
-        private RelayCommand displayCommand;
-        public RelayCommand DisplayCommand
-        {
-            get
-            {
-                return displayCommand ?? (displayCommand = new RelayCommand(obj =>
-                {
-                    MessageBox.Show($"{AlbumName}  {Genre}  {Performer}  {Author}");
-                }));
-            }
-        }
         private RelayCommand findCommand;
         public RelayCommand FindCommand
         {
@@ -68,7 +57,7 @@ namespace WpfApp.ViewModels
                     {
                         Songs.Add(item);
                     }
-                }));
+                }, obj=> { return true; }));
             }
         }
         public IList<Song> GetFilteredContainerItemFromFilteredContainers(IFiltrator<Album> containerFiltrator, IFiltrator<Song> containerItemFiltrator)
