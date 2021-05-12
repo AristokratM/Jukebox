@@ -49,14 +49,14 @@ namespace Jukebox.Services
 
         public IList<Album> GetFilteredContainers(IFiltrator<Album> filtrator)
         {
-            return unitOfWork.AlbumRepository.GetFilteredAlbums(((ContainerFilter)filtrator).ToEntity()).Select(s=>s.ToDomain()).ToList();
+            return unitOfWork.AlbumRepository.GetFilteredAlbums(filtrator.ToEntity()).Select(s=>s.ToDomain()).ToList();
         }
 
         public IList<Song> GetFilteredContainerItemsFromContainers(IList<Album> containers, IFiltrator<Song> filtrator)
         {
             return unitOfWork.AlbumRepository.GetFilteredContainerItemsFromAlbums(
                 containers.Select(s => s.ToEntity()).ToList(), 
-                ((ContainerItemFilter)filtrator).ToEntity()).Select(s => s.ToDomain()).ToList();
+                filtrator.ToEntity()).Select(s => s.ToDomain()).ToList();
         }
         public void Update(Album container)
         {

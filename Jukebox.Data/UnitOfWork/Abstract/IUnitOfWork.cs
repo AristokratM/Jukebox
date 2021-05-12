@@ -13,5 +13,6 @@ namespace Jukebox.Data.UnitOfWork.Abstract
         IAlbumRepository<AlbumEntity, int> AlbumRepository { get; }
 
         ISongRepository<SongEntity, int> SongRepository { get; }
+        void Save();
     }
 }

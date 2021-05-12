@@ -5,19 +5,34 @@ using System.Text;
 using System.Threading.Tasks;
 using Jukebox.Domain.Filters;
 using Jukebox.Data.Filters;
+using Jukebox.Domain.Abstract;
+using Jukebox.Data.Filters.Abstract;
+using Jukebox.Entities;
+using Jukebox.Domain;
+
 namespace Jukebox.Mappers
 {
     public static class FilterMappers
     {
-        public static ContainerEntityFilter ToEntity(this ContainerFilter filter)
+
+        public static IEntityFiltrator<AlbumEntity> ToEntity(this IFiltrator<Album> filter)
         {
-            return new ContainerEntityFilter(filter.Balance, filter.Name);
+            if(filter is ContainerFilter)
+            {
+                ContainerFilter filterImpl = ((ContainerFilter)filter);
+                return new ContainerEntityFilter(filterImpl.Balance, filterImpl.Name);
+            }
+            return new ContainerEntityFilter(0, string.Empty);
         }
-        
-        public static ContainerItemEntityFilter ToEntity(this ContainerItemFilter filter)
+
+        public static IEntityFiltrator<SongEntity> ToEntity(this IFiltrator<Song> filter)
         {
-            return new ContainerItemEntityFilter(filter.Author, filter.Genre, filter.Performer);
+            if (filter is ContainerItemFilter)
+            {
+                ContainerItemFilter filterImpl = ((ContainerItemFilter)filter);
+                return new ContainerItemEntityFilter(filterImpl.Author, filterImpl.Genre, filterImpl.Performer);
+            }
+            return new ContainerItemEntityFilter(string.Empty, string.Empty, string.Empty);
         }
-        
     }
 }

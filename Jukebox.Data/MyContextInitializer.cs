@@ -88,10 +88,6 @@ namespace Jukebox.Data
             context.Songs.Add(songEntity3);
             context.Songs.Add(songEntity4);
             context.SaveChanges();
-            foreach (var item in context.Songs)
-            {
-                Console.WriteLine(item);
-            }
         }
     }
 }
